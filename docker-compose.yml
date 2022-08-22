@@ -1,13 +1,6 @@
 version: '3.2'
 
 services:
-  postgres:
-    image: postgres:12
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=rest-app-back
   rest-app-back:
     image: rest-app-back
     container_name: rest-app-back
@@ -24,3 +17,10 @@ services:
       - ENV=local
     env_file:
       - local.env
+  postgres:
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=rest-app-back
