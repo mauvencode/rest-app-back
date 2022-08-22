@@ -1,18 +1,17 @@
 from sqlalchemy.orm import Session
 
 from .models import AppLocation, Property
-from app.schemas import AppLocationDto
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 from uuid import UUID
 
 
-def save_app_location(db: Session, app_location_dto: AppLocationDto):
+def save_app_location(db: Session, houmer_id, latitude, longitude, speed, timestamp):
     db_app_location = AppLocation(
-        houmer_id = app_location_dto.houmer_id,
-        latitude = app_location_dto.latitude,
-        longitude = app_location_dto.longitude,
-        speed = app_location_dto.speed,
-        timestamp = app_location_dto.timestamp
+        houmer_id = houmer_id,
+        latitude = latitude,
+        longitude = longitude,
+        speed = speed,
+        timestamp = timestamp
     )
     db.add(db_app_location)
     db.commit()
