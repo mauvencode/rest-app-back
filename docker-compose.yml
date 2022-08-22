@@ -1,0 +1,26 @@
+version: '3.2'
+
+services:
+  postgres:
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=rest-app-back
+  rest-app-back:
+    image: rest-app-back
+    container_name: rest-app-back
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    environment:
+      - ENV=local
+    env_file:
+      - local.env
