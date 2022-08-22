@@ -1,5 +1,12 @@
 # README
 
+# Table of contents
+- [Description](#description)
+- [Run code](#run-code)
+- [Load sample data](#load-sample-data)
+- [Endpoints documentation](#endpoints-documentation)
+- [Manual testing](#manual-testing)
+
 ## Description
 This module is a python backend rest app, which intend to implement several requirements focused on storing and processing geolocated data sent from a mobile app.
 
@@ -10,11 +17,13 @@ This module is a python backend rest app, which intend to implement several requ
 
 ### Asumptions
 - It is possible to get basic gps data from mobile phone app: latitude, longitude, speed, timestamp.
-- Api security is implemented on higher layers such as api gateway tokens.
+- Api security is implemented on higher layers such as api gateway.
 
 
 ### Stack
 - Python 3.10
+- Shapely 1.8 (geo lib)
+- SQLAlchemy 1.4 (python orm)
 - Postgres 12
 - Docker to run as containered app
 
@@ -23,7 +32,7 @@ The easyest way to run this code can be using 'docker-compose'.
 
 `$ docker-compose up`
 
-To check istalled containers:
+To check installed containers:
 
 `$ docker ps`
 
@@ -32,7 +41,7 @@ To stop containers using 'ctrl+C'.
 ## Load sample data
 Once app is running it is recomended load sample data to play with it.
 
-`$ PGPASSWORD='postgres' psql -h localhost -U postgres -p 5432 -d rest-app-back -f db_local.sample.sql`
+`$ PGPASSWORD='postgres' psql -h localhost -U postgres -p 5432 -d rest-app-back -f ./scripts/db_local.sample.sql`
 
 ## Endpoints documentation
 You can check all endpoints that are implemented using swagger doc url:
@@ -101,3 +110,4 @@ example response:
 	]
 }
 ```
+
