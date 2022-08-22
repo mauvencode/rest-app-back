@@ -1,7 +1,8 @@
-# README
+# rest-app-back
 
-# Table of contents
+## Table of contents
 - [Description](#description)
+- [Download code](#download-code)
 - [Run code](#run-code)
 - [Load sample data](#load-sample-data)
 - [Endpoints documentation](#endpoints-documentation)
@@ -18,18 +19,26 @@ This module is a python backend rest app, which intend to implement several requ
 ### Asumptions
 - It is possible to get basic gps data from mobile phone app: latitude, longitude, speed, timestamp.
 - Api security is implemented on higher layers such as api gateway.
-
+- Minimalistic models thinking on microservice approach.
 
 ### Stack
 - Python 3.10
+- FastAPI
 - Shapely 1.8 (geo lib)
 - SQLAlchemy 1.4 (python orm)
 - Postgres 12
 - Docker to run as containered app
 
-## Run code
-The easyest way to run this code can be using 'docker-compose'.
 
+## Download code
+To download code, execute a git clone from the repo.
+
+`$ git clone https://github.com/mauvencode/rest-app-back.git`
+
+## Run code
+The easyest way to run this code can be using 'docker-compose' inside the directory.
+
+`$ cd rest-app-back` 
 `$ docker-compose up`
 
 To check installed containers:
@@ -37,6 +46,21 @@ To check installed containers:
 `$ docker ps`
 
 To stop containers using 'ctrl+C'.
+
+In order to run manually, you need to execute the following instructions:
+
+- go to project directory
+`$ cd rest-app-back` 
+- create a venv environment
+`$ virtualenv -p python3.10 venv`
+- activate venv
+`$ source venv/bin/activate`
+- install poetry
+`$ pip install poetry`
+- install dependencies
+`$ poetry install`
+- run app with your env configs
+`DB_HOST=localhost DB_PORT=5432 DB_USER=postgres DB_PASS=postgres DB_NAME=rest-app-back python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8080`
 
 ## Load sample data
 Once app is running it is recomended load sample data to play with it.
